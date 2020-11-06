@@ -5,20 +5,23 @@
 import { ClientConfig } from './../../ClientConfig';
 import { Device } from './Device';
 import * as Sentry from '@sentry/browser';
-import  { callApp } from './../platform/AppBridge';
+import { callApp } from './../platform/AppBridge';
 import { isError, isErrorEvent, isDOMError, isDOMException, isArray, isObjectLike, isPlainObject, isString } from './TypeOf';
 
-// 使用sentry browser版本自动捕获异常进行上报
-const DSN = 'https://xxx.xxx.xxx/';
-if (cc.sys.isBrowser) {
-    cc.log("web环境，使用sentry捕获异常")
-    Sentry.init({
-        dsn: DSN
-    });
+
+function initSentry() {
+    // 使用sentry browser版本自动捕获异常进行上报
+    const DSN = 'https://baidu.com/';
+    if (cc.sys.isBrowser) {
+        cc.log("web环境，使用sentry捕获异常")
+        Sentry.init({
+            dsn: DSN
+        });
+    }
 }
 
 const MSG_PREFIX = '® ';
-function reportError(e: any, options?:any) {
+function reportError(e: any, options?: any) {
     if (cc.sys.isBrowser) {
         const { msg = '', level = 'warning', group } = (
             isPlainObject(options)
@@ -159,5 +162,6 @@ function track(params) {
 
 export {
     track,
-    reportError
+    reportError,
+    initSentry
 }

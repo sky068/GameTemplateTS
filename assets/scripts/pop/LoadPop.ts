@@ -2,7 +2,7 @@
  * @Author: xujiawei 
  * @Date: 2020-11-06 15:43:52 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-06 16:25:19
+ * @Last Modified time: 2020-11-06 19:33:22
  * 
  * 全屏loading界面，用来加载数据并显示进度
  */
@@ -29,16 +29,16 @@ export class LoadPop extends cc.Component {
 
     // todo: 调用show后立即移除有可能不生效，因为show是异步的
     static removeLoadPop() {
-        if (this.loadPop) {
+        if (LoadPop.loadPop && cc.isValid(LoadPop.loadPop, true)) {
             cc.Canvas.instance.scheduleOnce(res=>{
-                this.loadPop.destroy();
-                this.loadPop = null;
+                LoadPop.loadPop.destroy();
+                LoadPop.loadPop = null;
             }, 0.0);
         }
     }
 
     static async showLoadPop(showProgress: boolean = true, showDes: boolean = true) {
-        if (this.loadPop) {
+        if (LoadPop.loadPop) {
             return;
         }
 
@@ -50,10 +50,10 @@ export class LoadPop extends cc.Component {
                     reject(err);
                     return;
                 }
-                this.loadPop = cc.instantiate(pf);
-                this.loadPop.zIndex = ConstData.ZIndex.LOADING;
-                this.loadPop.parent = cc.Canvas.instance.node;
-                this.loadPop.getComponent("LoadPop").init(showProgress, showDes);
+                LoadPop.loadPop = cc.instantiate(pf);
+                LoadPop.loadPop.zIndex = ConstData.ZIndex.LOADING;
+                LoadPop.loadPop.parent = cc.Canvas.instance.node;
+                LoadPop.loadPop.getComponent("LoadPop").init(showProgress, showDes);
                 resolve();
             });
         });
@@ -67,7 +67,7 @@ export class LoadPop extends cc.Component {
     }
 
     static updateLoadingInfo(p: number, des: string) {
-        if (this.loadPop) {
+        if (LoadPop.loadPop) {
             let loadPop: LoadPop = this.loadPop.getComponent("LoadPop");
             loadPop.progressBar.progress = p;
             loadPop.desLabel.string = des;

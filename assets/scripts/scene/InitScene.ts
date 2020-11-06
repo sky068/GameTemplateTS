@@ -11,7 +11,7 @@ import { Tip } from '../framework/common/Tip';
 
 import { LocalDataMng } from '../framework/data/localData/LocalDataMng';
 import { Audio } from '../framework/core/Audio';
-import { reportError } from '../framework/common/Reportor';
+import { initSentry, reportError } from '../framework/common/Reportor';
 import { LoadPop } from '../pop/LoadPop';
 
 const { ccclass, property } = cc._decorator;
@@ -58,6 +58,8 @@ export class InitScene extends cc.Component {
 
         // 错误捕获
         ErrorReportor.init();
+
+        // initSentry();
 
         //--------以下放到最后处理-------
         Director.init();
