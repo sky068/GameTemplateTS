@@ -9,7 +9,7 @@ import  { callApp } from './../platform/AppBridge';
 import { isError, isErrorEvent, isDOMError, isDOMException, isArray, isObjectLike, isPlainObject, isString } from './TypeOf';
 
 // 使用sentry browser版本自动捕获异常进行上报
-const DSN = 'https://7f2ed69f4f074ca7bee97316192a6c00@sentry.putaoread.top/10';
+const DSN = 'https://xxx.xxx.xxx/';
 if (cc.sys.isBrowser) {
     cc.log("web环境，使用sentry捕获异常")
     Sentry.init({
