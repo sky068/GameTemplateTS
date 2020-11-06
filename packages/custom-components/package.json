@@ -1,0 +1,7 @@
+{
+  "name": "custom-components",
+  "version": "0.0.1",
+  "description": "The custom-components inspector.",
+  "author": "Sky Xu",
+  "main": "main.js"
+}

@@ -1,0 +1,10 @@
+{
+    "DEV_ENV": 2,
+    "GAME_VERSION": "",
+    "GAME_BUILD": 0,
+    "CHANNEL": "",
+    "HOT_UPDATE_OPEN": false,
+    "HOT_UPDATE_SUB_PATH": "pt/download",
+    "BASE_LOCAL_VERSION": "",
+    "SERVER_ROOT": "https://xx.xx.xx/"
+}

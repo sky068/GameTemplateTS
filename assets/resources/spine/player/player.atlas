@@ -1,0 +1,1553 @@
+
+player.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Beard_0
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_3
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_4
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_2_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_3_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_3_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_4_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_4_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_2_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_3_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_3_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_4_a
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_4_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+cap_0
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+glasses_0
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+pattern_0
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_2_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_3_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_4_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_1_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_3_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_4_b
+  rotate: false
+  xy: 875, 252
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+below_boy_shorts_1
+  rotate: true
+  xy: 768, 659
+  size: 88, 57
+  orig: 88, 57
+  offset: 0, 0
+  index: -1
+below_boy_shorts_2
+  rotate: false
+  xy: 307, 3
+  size: 88, 57
+  orig: 88, 57
+  offset: 0, 0
+  index: -1
+below_boy_shorts_3
+  rotate: false
+  xy: 526, 356
+  size: 81, 53
+  orig: 81, 53
+  offset: 0, 0
+  index: -1
+below_boy_shorts_4
+  rotate: false
+  xy: 533, 410
+  size: 83, 54
+  orig: 83, 54
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_1_a
+  rotate: true
+  xy: 456, 246
+  size: 48, 68
+  orig: 48, 68
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_2_a
+  rotate: true
+  xy: 746, 355
+  size: 47, 65
+  orig: 47, 65
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_3_a
+  rotate: false
+  xy: 437, 55
+  size: 44, 80
+  orig: 44, 80
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_3_b
+  rotate: true
+  xy: 747, 219
+  size: 26, 46
+  orig: 26, 46
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_4_a
+  rotate: false
+  xy: 540, 55
+  size: 45, 80
+  orig: 45, 80
+  offset: 0, 0
+  index: -1
+below_boy_shorts_left_4_b
+  rotate: true
+  xy: 745, 192
+  size: 26, 46
+  orig: 26, 46
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_1_a
+  rotate: true
+  xy: 732, 470
+  size: 52, 70
+  orig: 52, 70
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_2_a
+  rotate: false
+  xy: 746, 403
+  size: 49, 66
+  orig: 49, 66
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_3_a
+  rotate: false
+  xy: 586, 55
+  size: 44, 80
+  orig: 44, 80
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_3_b
+  rotate: true
+  xy: 879, 280
+  size: 27, 45
+  orig: 27, 45
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_4_a
+  rotate: false
+  xy: 631, 55
+  size: 44, 80
+  orig: 44, 80
+  offset: 0, 0
+  index: -1
+below_boy_shorts_right_4_b
+  rotate: true
+  xy: 879, 252
+  size: 27, 45
+  orig: 27, 45
+  offset: 0, 0
+  index: -1
+below_girl_shorts_1
+  rotate: false
+  xy: 533, 465
+  size: 88, 57
+  orig: 88, 57
+  offset: 0, 0
+  index: -1
+below_girl_shorts_2
+  rotate: true
+  xy: 456, 295
+  size: 118, 69
+  orig: 118, 69
+  offset: 0, 0
+  index: -1
+below_girl_shorts_left_1_a
+  rotate: false
+  xy: 812, 337
+  size: 47, 65
+  orig: 47, 65
+  offset: 0, 0
+  index: -1
+below_girl_shorts_right_1_a
+  rotate: false
+  xy: 796, 403
+  size: 49, 66
+  orig: 49, 66
+  offset: 0, 0
+  index: -1
+boy_eye_a
+  rotate: true
+  xy: 927, 650
+  size: 96, 36
+  orig: 96, 36
+  offset: 0, 0
+  index: -1
+boy_eye_a_blink_3
+  rotate: true
+  xy: 927, 650
+  size: 96, 36
+  orig: 96, 36
+  offset: 0, 0
+  index: -1
+boy_eye_a_ask
+  rotate: false
+  xy: 608, 373
+  size: 96, 36
+  orig: 96, 36
+  offset: 0, 0
+  index: -1
+boy_eye_a_blink_1
+  rotate: true
+  xy: 961, 553
+  size: 96, 10
+  orig: 96, 10
+  offset: 0, 0
+  index: -1
+boy_eye_a_blink_2
+  rotate: false
+  xy: 608, 354
+  size: 96, 18
+  orig: 96, 18
+  offset: 0, 0
+  index: -1
+boy_eye_a_sad
+  rotate: false
+  xy: 596, 317
+  size: 96, 36
+  orig: 96, 36
+  offset: 0, 0
+  index: -1
+boy_eye_b
+  rotate: false
+  xy: 596, 287
+  size: 97, 29
+  orig: 97, 29
+  offset: 0, 0
+  index: -1
+boy_eye_b_blink_3
+  rotate: false
+  xy: 596, 287
+  size: 97, 29
+  orig: 97, 29
+  offset: 0, 0
+  index: -1
+boy_eye_b_ask
+  rotate: false
+  xy: 771, 625
+  size: 97, 30
+  orig: 97, 30
+  offset: 0, 0
+  index: -1
+boy_eye_b_blink_1
+  rotate: true
+  xy: 950, 458
+  size: 97, 10
+  orig: 97, 10
+  offset: 0, 0
+  index: -1
+boy_eye_b_blink_2
+  rotate: false
+  xy: 471, 136
+  size: 97, 18
+  orig: 97, 18
+  offset: 0, 0
+  index: -1
+boy_eye_b_sad
+  rotate: true
+  xy: 1001, 540
+  size: 98, 22
+  orig: 98, 22
+  offset: 0, 0
+  index: -1
+boy_eye_c
+  rotate: true
+  xy: 961, 455
+  size: 97, 22
+  orig: 97, 22
+  offset: 0, 0
+  index: -1
+boy_eye_c_blink_3
+  rotate: true
+  xy: 961, 455
+  size: 97, 22
+  orig: 97, 22
+  offset: 0, 0
+  index: -1
+boy_eye_c_ask
+  rotate: false
+  xy: 675, 625
+  size: 95, 26
+  orig: 95, 26
+  offset: 0, 0
+  index: -1
+boy_eye_c_blink_1
+  rotate: true
+  xy: 959, 362
+  size: 92, 9
+  orig: 92, 9
+  offset: 0, 0
+  index: -1
+boy_eye_c_blink_2
+  rotate: true
+  xy: 930, 360
+  size: 96, 15
+  orig: 96, 15
+  offset: 0, 0
+  index: -1
+boy_eye_c_sad
+  rotate: false
+  xy: 569, 136
+  size: 96, 19
+  orig: 96, 19
+  offset: 0, 0
+  index: -1
+boy_eye_d
+  rotate: true
+  xy: 972, 571
+  size: 96, 28
+  orig: 96, 28
+  offset: 0, 0
+  index: -1
+boy_eye_d_blink_3
+  rotate: true
+  xy: 972, 571
+  size: 96, 28
+  orig: 96, 28
+  offset: 0, 0
+  index: -1
+boy_eye_d_ask
+  rotate: true
+  xy: 927, 556
+  size: 93, 33
+  orig: 93, 33
+  offset: 0, 0
+  index: -1
+boy_eye_d_blink_1
+  rotate: true
+  xy: 946, 362
+  size: 94, 12
+  orig: 94, 12
+  offset: 0, 0
+  index: -1
+boy_eye_d_blink_2
+  rotate: true
+  xy: 860, 316
+  size: 97, 17
+  orig: 97, 17
+  offset: 0, 0
+  index: -1
+boy_eye_d_sad
+  rotate: true
+  xy: 927, 457
+  size: 98, 22
+  orig: 98, 22
+  offset: 0, 0
+  index: -1
+boy_eyebrow_1
+  rotate: true
+  xy: 1009, 714
+  size: 75, 14
+  orig: 75, 14
+  offset: 0, 0
+  index: -1
+boy_eyebrow_1_sad
+  rotate: true
+  xy: 1009, 639
+  size: 74, 14
+  orig: 74, 14
+  offset: 0, 0
+  index: -1
+boy_eyebrow_2
+  rotate: false
+  xy: 738, 296
+  size: 62, 14
+  orig: 62, 14
+  offset: 0, 0
+  index: -1
+boy_eyebrow_2_sad
+  rotate: true
+  xy: 1010, 311
+  size: 66, 13
+  orig: 66, 13
+  offset: 0, 0
+  index: -1
+boy_eyebrow_3
+  rotate: true
+  xy: 984, 492
+  size: 78, 16
+  orig: 78, 16
+  offset: 0, 0
+  index: -1
+boy_eyebrow_3_sad
+  rotate: true
+  xy: 1008, 378
+  size: 81, 11
+  orig: 81, 11
+  offset: 0, 0
+  index: -1
+boy_eyebrow_4
+  rotate: true
+  xy: 1010, 248
+  size: 62, 13
+  orig: 62, 13
+  offset: 0, 0
+  index: -1
+boy_eyebrow_4_sad
+  rotate: true
+  xy: 846, 403
+  size: 69, 12
+  orig: 69, 12
+  offset: 0, 0
+  index: -1
+boy_hair_1
+  rotate: false
+  xy: 1, 1
+  size: 148, 126
+  orig: 148, 126
+  offset: 0, 0
+  index: -1
+boy_hair_2
+  rotate: true
+  xy: 169, 230
+  size: 172, 139
+  orig: 172, 139
+  offset: 0, 0
+  index: -1
+boy_hair_3
+  rotate: false
+  xy: 843, 890
+  size: 179, 133
+  orig: 179, 133
+  offset: 0, 0
+  index: -1
+boy_hair_4
+  rotate: false
+  xy: 169, 96
+  size: 163, 133
+  orig: 163, 133
+  offset: 0, 0
+  index: -1
+cap_1
+  rotate: false
+  xy: 172, 746
+  size: 194, 123
+  orig: 194, 123
+  offset: 0, 0
+  index: -1
+cap_10
+  rotate: false
+  xy: 410, 870
+  size: 237, 153
+  orig: 237, 153
+  offset: 0, 0
+  index: -1
+cap_2
+  rotate: false
+  xy: 367, 746
+  size: 194, 123
+  orig: 194, 123
+  offset: 0, 0
+  index: -1
+cap_3
+  rotate: false
+  xy: 314, 622
+  size: 194, 123
+  orig: 194, 123
+  offset: 0, 0
+  index: -1
+cap_4
+  rotate: false
+  xy: 314, 518
+  size: 184, 103
+  orig: 184, 103
+  offset: 0, 0
+  index: -1
+cap_5
+  rotate: false
+  xy: 303, 414
+  size: 184, 103
+  orig: 184, 103
+  offset: 0, 0
+  index: -1
+cap_6
+  rotate: true
+  xy: 333, 61
+  size: 184, 103
+  orig: 184, 103
+  offset: 0, 0
+  index: -1
+cap_7
+  rotate: true
+  xy: 1, 555
+  size: 237, 153
+  orig: 237, 153
+  offset: 0, 0
+  index: -1
+cap_8
+  rotate: false
+  xy: 172, 870
+  size: 237, 153
+  orig: 237, 153
+  offset: 0, 0
+  index: -1
+cap_9
+  rotate: true
+  xy: 1, 317
+  size: 237, 153
+  orig: 237, 153
+  offset: 0, 0
+  index: -1
+face
+  rotate: false
+  xy: 309, 246
+  size: 146, 167
+  orig: 146, 167
+  offset: 0, 0
+  index: -1
+girl_eye_a
+  rotate: true
+  xy: 645, 625
+  size: 109, 29
+  orig: 109, 29
+  offset: 0, 0
+  index: -1
+girl_eye_a_ask
+  rotate: true
+  xy: 437, 136
+  size: 109, 33
+  orig: 109, 33
+  offset: 0, 0
+  index: -1
+girl_eye_a_blink_1
+  rotate: true
+  xy: 863, 520
+  size: 104, 12
+  orig: 104, 12
+  offset: 0, 0
+  index: -1
+girl_eye_a_blink_2
+  rotate: false
+  xy: 586, 269
+  size: 109, 17
+  orig: 109, 17
+  offset: 0, 0
+  index: -1
+girl_eye_a_blink_3
+  rotate: false
+  xy: 622, 493
+  size: 109, 29
+  orig: 109, 29
+  offset: 0, 0
+  index: -1
+girl_eye_a_sad
+  rotate: false
+  xy: 622, 465
+  size: 105, 27
+  orig: 105, 27
+  offset: 0, 0
+  index: -1
+girl_eye_b
+  rotate: true
+  xy: 876, 546
+  size: 109, 23
+  orig: 109, 23
+  offset: 0, 0
+  index: -1
+girl_eye_b_blink_3
+  rotate: true
+  xy: 876, 546
+  size: 109, 23
+  orig: 109, 23
+  offset: 0, 0
+  index: -1
+girl_eye_b_blink_1
+  rotate: true
+  xy: 520, 414
+  size: 103, 12
+  orig: 103, 12
+  offset: 0, 0
+  index: -1
+girl_eye_b_blink_2
+  rotate: false
+  xy: 586, 252
+  size: 109, 16
+  orig: 109, 16
+  offset: 0, 0
+  index: -1
+girl_eye_b_blink_ask
+  rotate: true
+  xy: 900, 550
+  size: 105, 26
+  orig: 105, 26
+  offset: 0, 0
+  index: -1
+girl_eye_b_sad
+  rotate: false
+  xy: 586, 207
+  size: 106, 20
+  orig: 106, 20
+  offset: 0, 0
+  index: -1
+girl_eye_c
+  rotate: true
+  xy: 499, 518
+  size: 103, 28
+  orig: 103, 28
+  offset: 0, 0
+  index: -1
+girl_eye_c_blink_3
+  rotate: true
+  xy: 499, 518
+  size: 103, 28
+  orig: 103, 28
+  offset: 0, 0
+  index: -1
+girl_eye_c_ask
+  rotate: true
+  xy: 488, 414
+  size: 103, 31
+  orig: 103, 31
+  offset: 0, 0
+  index: -1
+girl_eye_c_blink_1
+  rotate: false
+  xy: 586, 240
+  size: 107, 11
+  orig: 107, 11
+  offset: 0, 0
+  index: -1
+girl_eye_c_blink_2
+  rotate: true
+  xy: 676, 52
+  size: 103, 17
+  orig: 103, 17
+  offset: 0, 0
+  index: -1
+girl_eye_c_sad
+  rotate: false
+  xy: 586, 180
+  size: 105, 26
+  orig: 105, 26
+  offset: 0, 0
+  index: -1
+girl_eye_d
+  rotate: true
+  xy: 805, 521
+  size: 103, 28
+  orig: 103, 28
+  offset: 0, 0
+  index: -1
+girl_eye_d_blink_3
+  rotate: true
+  xy: 805, 521
+  size: 103, 28
+  orig: 103, 28
+  offset: 0, 0
+  index: -1
+girl_eye_d_ask
+  rotate: true
+  xy: 834, 521
+  size: 103, 28
+  orig: 103, 28
+  offset: 0, 0
+  index: -1
+girl_eye_d_blink_1
+  rotate: false
+  xy: 586, 228
+  size: 107, 11
+  orig: 107, 11
+  offset: 0, 0
+  index: -1
+girl_eye_d_blink_2
+  rotate: true
+  xy: 899, 442
+  size: 103, 17
+  orig: 103, 17
+  offset: 0, 0
+  index: -1
+girl_eye_d_sad
+  rotate: true
+  xy: 877, 442
+  size: 103, 21
+  orig: 103, 21
+  offset: 0, 0
+  index: -1
+girl_eyebrow_1
+  rotate: true
+  xy: 923, 361
+  size: 84, 6
+  orig: 84, 6
+  offset: 0, 0
+  index: -1
+girl_eyebrow_1_sad
+  rotate: true
+  xy: 155, 318
+  size: 84, 13
+  orig: 84, 13
+  offset: 0, 0
+  index: -1
+girl_eyebrow_2
+  rotate: true
+  xy: 979, 367
+  size: 87, 9
+  orig: 87, 9
+  offset: 0, 0
+  index: -1
+girl_eyebrow_2_sad
+  rotate: true
+  xy: 969, 363
+  size: 91, 9
+  orig: 91, 9
+  offset: 0, 0
+  index: -1
+girl_hair_1
+  rotate: false
+  xy: 155, 579
+  size: 158, 166
+  orig: 158, 166
+  offset: 0, 0
+  index: -1
+girl_hair_2
+  rotate: true
+  xy: 155, 403
+  size: 175, 147
+  orig: 175, 147
+  offset: 0, 0
+  index: -1
+girl_hair_3
+  rotate: false
+  xy: 1, 793
+  size: 170, 230
+  orig: 170, 230
+  offset: 0, 0
+  index: -1
+girl_hair_4
+  rotate: false
+  xy: 1, 128
+  size: 167, 188
+  orig: 167, 188
+  offset: 0, 0
+  index: -1
+glasses_1
+  rotate: true
+  xy: 785, 748
+  size: 143, 53
+  orig: 143, 53
+  offset: 0, 0
+  index: -1
+left_big_arm_a
+  rotate: false
+  xy: 700, 410
+  size: 45, 54
+  orig: 45, 54
+  offset: 0, 0
+  index: -1
+left_big_leg_a
+  rotate: false
+  xy: 925, 284
+  size: 41, 75
+  orig: 41, 75
+  offset: 0, 0
+  index: -1
+left_foot
+  rotate: false
+  xy: 962, 224
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+left_hand_a
+  rotate: false
+  xy: 756, 168
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: -1
+left_little_arm_a
+  rotate: true
+  xy: 794, 218
+  size: 31, 47
+  orig: 31, 47
+  offset: 0, 0
+  index: -1
+left_little_leg_a
+  rotate: true
+  xy: 694, 221
+  size: 24, 52
+  orig: 24, 52
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 787, 289
+  size: 14, 6
+  orig: 14, 6
+  offset: 0, 0
+  index: -1
+speak_1
+  rotate: false
+  xy: 787, 289
+  size: 14, 6
+  orig: 14, 6
+  offset: 0, 0
+  index: -1
+mouth_laugh
+  rotate: false
+  xy: 694, 287
+  size: 43, 30
+  orig: 43, 30
+  offset: 0, 0
+  index: -1
+mouth_sad
+  rotate: false
+  xy: 309, 231
+  size: 23, 14
+  orig: 23, 14
+  offset: 0, 0
+  index: -1
+neck
+  rotate: false
+  xy: 705, 318
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1
+nose
+  rotate: true
+  xy: 307, 61
+  size: 8, 9
+  orig: 8, 9
+  offset: 0, 0
+  index: -1
+npc_1_Beard
+  rotate: false
+  xy: 839, 747
+  size: 119, 57
+  orig: 119, 57
+  offset: 0, 0
+  index: -1
+npc_1_below_boy_shorts
+  rotate: false
+  xy: 617, 410
+  size: 82, 54
+  orig: 82, 54
+  offset: 0, 0
+  index: -1
+npc_1_cap
+  rotate: false
+  xy: 150, 2
+  size: 156, 93
+  orig: 156, 93
+  offset: 0, 0
+  index: -1
+npc_1_eye
+  rotate: false
+  xy: 586, 156
+  size: 105, 23
+  orig: 105, 23
+  offset: 0, 0
+  index: -1
+npc_1_eye_blink_3
+  rotate: false
+  xy: 586, 156
+  size: 105, 23
+  orig: 105, 23
+  offset: 0, 0
+  index: -1
+npc_1_eye_ask
+  rotate: false
+  xy: 530, 31
+  size: 105, 23
+  orig: 105, 23
+  offset: 0, 0
+  index: -1
+npc_1_eye_blink_1
+  rotate: true
+  xy: 917, 446
+  size: 103, 9
+  orig: 103, 9
+  offset: 0, 0
+  index: -1
+npc_1_eye_blink_2
+  rotate: true
+  xy: 859, 414
+  size: 105, 17
+  orig: 105, 17
+  offset: 0, 0
+  index: -1
+npc_1_eye_sad
+  rotate: false
+  xy: 530, 7
+  size: 105, 23
+  orig: 105, 23
+  offset: 0, 0
+  index: -1
+npc_1_eyebrow
+  rotate: true
+  xy: 989, 381
+  size: 78, 18
+  orig: 78, 18
+  offset: 0, 0
+  index: -1
+npc_1_eyebrow_sad
+  rotate: true
+  xy: 556, 167
+  size: 78, 18
+  orig: 78, 18
+  offset: 0, 0
+  index: -1
+npc_1_glasses
+  rotate: false
+  xy: 839, 805
+  size: 119, 84
+  orig: 119, 84
+  offset: 0, 0
+  index: -1
+npc_1_hair_1
+  rotate: false
+  xy: 648, 892
+  size: 194, 131
+  orig: 194, 131
+  offset: 0, 0
+  index: -1
+npc_1_pants_left_a
+  rotate: false
+  xy: 964, 668
+  size: 44, 80
+  orig: 44, 80
+  offset: 0, 0
+  index: -1
+npc_1_pants_left_b
+  rotate: true
+  xy: 792, 191
+  size: 26, 46
+  orig: 26, 46
+  offset: 0, 0
+  index: -1
+npc_1_pants_right_a
+  rotate: false
+  xy: 878, 361
+  size: 44, 80
+  orig: 44, 80
+  offset: 0, 0
+  index: -1
+npc_1_pants_right_b
+  rotate: true
+  xy: 875, 224
+  size: 27, 45
+  orig: 27, 45
+  offset: 0, 0
+  index: -1
+npc_1_upper_garment
+  rotate: false
+  xy: 562, 735
+  size: 112, 134
+  orig: 112, 134
+  offset: 0, 0
+  index: -1
+npc_1_upper_garment_left_sleeve_a
+  rotate: false
+  xy: 526, 246
+  size: 36, 51
+  orig: 36, 51
+  offset: 0, 0
+  index: -1
+npc_1_upper_garment_left_sleeve_b
+  rotate: false
+  xy: 694, 12
+  size: 32, 41
+  orig: 32, 41
+  offset: 0, 0
+  index: -1
+npc_1_upper_garment_right_sleeve_a
+  rotate: true
+  xy: 746, 311
+  size: 43, 55
+  orig: 43, 55
+  offset: 0, 0
+  index: -1
+npc_1_upper_garment_right_sleeve_b
+  rotate: true
+  xy: 984, 460
+  size: 31, 39
+  orig: 31, 39
+  offset: 0, 0
+  index: -1
+pattern_1
+  rotate: false
+  xy: 307, 70
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+pattern_2
+  rotate: false
+  xy: 967, 245
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+right_big_arm_a
+  rotate: false
+  xy: 878, 308
+  size: 46, 52
+  orig: 46, 52
+  offset: 0, 0
+  index: -1
+right_big_leg_a
+  rotate: false
+  xy: 967, 286
+  size: 42, 75
+  orig: 42, 75
+  offset: 0, 0
+  index: -1
+right_foot
+  rotate: false
+  xy: 875, 203
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+right_hand_a
+  rotate: true
+  xy: 839, 191
+  size: 23, 27
+  orig: 23, 27
+  offset: 0, 0
+  index: -1
+right_little_arm_a
+  rotate: true
+  xy: 692, 156
+  size: 31, 44
+  orig: 31, 44
+  offset: 0, 0
+  index: -1
+right_little_leg_a
+  rotate: false
+  xy: 636, 1
+  size: 24, 53
+  orig: 24, 53
+  offset: 0, 0
+  index: -1
+speak_2
+  rotate: false
+  xy: 563, 251
+  size: 22, 12
+  orig: 22, 12
+  offset: 0, 0
+  index: -1
+speak_3
+  rotate: true
+  xy: 563, 264
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+speak_4
+  rotate: true
+  xy: 858, 291
+  size: 24, 19
+  orig: 24, 19
+  offset: 0, 0
+  index: -1
+speak_5
+  rotate: false
+  xy: 150, 103
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: -1
+speak_6
+  rotate: false
+  xy: 396, 55
+  size: 23, 5
+  orig: 23, 5
+  offset: 0, 0
+  index: -1
+speak_ask_1
+  rotate: true
+  xy: 1019, 523
+  size: 16, 4
+  orig: 16, 4
+  offset: 0, 0
+  index: -1
+speak_sad_1
+  rotate: true
+  xy: 1019, 523
+  size: 16, 4
+  orig: 16, 4
+  offset: 0, 0
+  index: -1
+speak_ask_2
+  rotate: true
+  xy: 964, 650
+  size: 17, 7
+  orig: 17, 7
+  offset: 0, 0
+  index: -1
+speak_ask_3
+  rotate: true
+  xy: 648, 870
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+speak_ask_4
+  rotate: true
+  xy: 737, 163
+  size: 24, 18
+  orig: 24, 18
+  offset: 0, 0
+  index: -1
+speak_ask_5
+  rotate: false
+  xy: 727, 82
+  size: 18, 23
+  orig: 18, 23
+  offset: 0, 0
+  index: -1
+speak_sad_2
+  rotate: true
+  xy: 693, 335
+  size: 18, 11
+  orig: 18, 11
+  offset: 0, 0
+  index: -1
+speak_sad_3
+  rotate: true
+  xy: 727, 62
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+speak_sad_4
+  rotate: true
+  xy: 1008, 217
+  size: 30, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+speak_sad_5
+  rotate: true
+  xy: 1001, 500
+  size: 39, 17
+  orig: 39, 17
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_1
+  rotate: false
+  xy: 621, 523
+  size: 91, 101
+  orig: 91, 101
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_2
+  rotate: false
+  xy: 675, 652
+  size: 92, 101
+  orig: 92, 101
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_3
+  rotate: true
+  xy: 826, 656
+  size: 90, 100
+  orig: 90, 100
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_4
+  rotate: false
+  xy: 713, 523
+  size: 91, 101
+  orig: 91, 101
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_1_a
+  rotate: true
+  xy: 959, 749
+  size: 40, 49
+  orig: 40, 49
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_2_a
+  rotate: true
+  xy: 693, 188
+  size: 32, 51
+  orig: 32, 51
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_3_a
+  rotate: true
+  xy: 526, 298
+  size: 57, 69
+  orig: 57, 69
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_3_b
+  rotate: true
+  xy: 959, 840
+  size: 49, 64
+  orig: 49, 64
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_4_a
+  rotate: false
+  xy: 705, 360
+  size: 40, 49
+  orig: 40, 49
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_left_sleeve_4_b
+  rotate: true
+  xy: 837, 256
+  size: 32, 41
+  orig: 32, 41
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_1_a
+  rotate: false
+  xy: 486, 1
+  size: 43, 50
+  orig: 43, 50
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_2_a
+  rotate: false
+  xy: 396, 1
+  size: 44, 53
+  orig: 44, 53
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_3_a
+  rotate: true
+  xy: 803, 473
+  size: 47, 55
+  orig: 47, 55
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_3_b
+  rotate: false
+  xy: 842, 215
+  size: 32, 40
+  orig: 32, 40
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_4_a
+  rotate: true
+  xy: 696, 246
+  size: 40, 49
+  orig: 40, 49
+  offset: 0, 0
+  index: -1
+upper_boy_T_shirt_right_sleeve_4_b
+  rotate: true
+  xy: 925, 251
+  size: 32, 41
+  orig: 32, 41
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_1
+  rotate: false
+  xy: 528, 523
+  size: 92, 101
+  orig: 92, 101
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_2
+  rotate: false
+  xy: 471, 155
+  size: 84, 90
+  orig: 84, 90
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_3
+  rotate: false
+  xy: 675, 754
+  size: 109, 137
+  orig: 109, 137
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_4
+  rotate: true
+  xy: 509, 625
+  size: 109, 135
+  orig: 109, 135
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_1_a
+  rotate: false
+  xy: 694, 54
+  size: 32, 51
+  orig: 32, 51
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_2_a
+  rotate: false
+  xy: 482, 66
+  size: 57, 69
+  orig: 57, 69
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_2_b
+  rotate: true
+  xy: 959, 790
+  size: 49, 64
+  orig: 49, 64
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_3_a
+  rotate: false
+  xy: 661, 1
+  size: 32, 50
+  orig: 32, 50
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_left_sleeve_4_a
+  rotate: false
+  xy: 746, 246
+  size: 40, 49
+  orig: 40, 49
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_1_a
+  rotate: false
+  xy: 441, 1
+  size: 44, 53
+  orig: 44, 53
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_2_a
+  rotate: true
+  xy: 802, 289
+  size: 47, 55
+  orig: 47, 55
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_2_b
+  rotate: true
+  xy: 921, 218
+  size: 32, 40
+  orig: 32, 40
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_3_a
+  rotate: true
+  xy: 787, 250
+  size: 38, 49
+  orig: 38, 49
+  offset: 0, 0
+  index: -1
+upper_girl_T_shirt_right_sleeve_4_a
+  rotate: false
+  xy: 694, 106
+  size: 38, 49
+  orig: 38, 49
+  offset: 0, 0
+  index: -1

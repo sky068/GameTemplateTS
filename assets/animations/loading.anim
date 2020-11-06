@@ -1,0 +1,59 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "jump",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.8333333333333334,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "root/bg/New Label": {
+        "comps": {
+          "cc.Label": {
+            "string": [
+              {
+                "frame": 0,
+                "value": "加"
+              },
+              {
+                "frame": 0.08333333333333333,
+                "value": "加载"
+              },
+              {
+                "frame": 0.16666666666666666,
+                "value": "加载资"
+              },
+              {
+                "frame": 0.25,
+                "value": "加载资源"
+              },
+              {
+                "frame": 0.3333333333333333,
+                "value": "加载资源中"
+              },
+              {
+                "frame": 0.4166666666666667,
+                "value": "加载资源中。"
+              },
+              {
+                "frame": 0.5,
+                "value": "加载资源中。。"
+              },
+              {
+                "frame": 0.5833333333333334,
+                "value": "加载资源中。。。"
+              },
+              {
+                "frame": 0.8333333333333334,
+                "value": "加载资源中。。。"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "events": []
+}
