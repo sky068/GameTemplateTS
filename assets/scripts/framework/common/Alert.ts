@@ -3,7 +3,7 @@
  */
 
 import PopupBase from './PopupBase';
-import PopupMng from './PopupMng';
+import { PopupMng } from './PopupMng';
 
 const { ccclass, property } = cc._decorator;
 type AlertCb = ()=>void;
