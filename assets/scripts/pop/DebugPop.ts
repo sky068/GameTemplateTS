@@ -7,6 +7,7 @@ const { ccclass, property } = cc._decorator;
 import { Tip } from './../framework/common/Tip';
 import { Alert } from './../framework/common/Alert';
 import PopupBase from '../framework/common/PopupBase';
+import { Loading } from '../framework/common/Loading';
 
 @ccclass
 export class DebugPop extends PopupBase<null> {
@@ -72,6 +73,12 @@ export class DebugPop extends PopupBase<null> {
                 });
 
                 break;
+            }
+            case "d6": {
+                Loading.show('test', 1);
+                this.scheduleOnce(t=>{
+                    Loading.hide('test');
+                }, 3);
             }
             default:
                 break;

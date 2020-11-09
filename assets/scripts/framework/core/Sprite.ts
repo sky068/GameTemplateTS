@@ -59,6 +59,7 @@ export class Sprite extends cc.Sprite {
                 if (!err) {
                     // if (cc.isValid(node) && sprite.url == url) {
                     if (cc.isValid(node)) {
+                        spriteFrame.addRef();
                         sprite.spriteFrame = spriteFrame;
                         updateFunc(null);
                     }
