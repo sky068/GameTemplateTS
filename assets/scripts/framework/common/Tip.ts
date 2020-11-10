@@ -11,6 +11,12 @@ const DELAY_LONG = 2.0;
 const DELAY_MID = 1.5;
 const DELAY_SHORT = 1.0;
 
+enum TipDelay {
+    ELAY_LONG = 2.0,
+    DELAY_MID = 1.5,
+    DELAY_SHORT = 1
+}
+
 @ccclass
 export class Tip extends cc.Component {
     @property(cc.Label)
@@ -21,11 +27,13 @@ export class Tip extends cc.Component {
 
     static tipNode: cc.Node = null;
 
+    static TipDelay: typeof TipDelay = TipDelay;
+
     originalWidth: number = 0;
     originalHeight: number = 0;
 
     // 显示tip
-    static show(text: string) {
+    static show(text: string, delay: TipDelay = TipDelay.DELAY_MID) {
         cc.loader.loadRes('prefabs/common/Tip', cc.Prefab, function (err, prefab: cc.Prefab) {
             if (!err) {
                 if (cc.isValid(this.tipNode)) {
@@ -35,7 +43,7 @@ export class Tip extends cc.Component {
                 this.tipNode.x = this.tipNode.y = 0;
                 this.tipNode.zIndex = ConstData.ZIndex.TIP;
                 this.tipNode.parent = cc.Canvas.instance.node;
-                this.tipNode.getComponent('Tip').init(text);
+                this.tipNode.getComponent('Tip').init(text, delay);
 
                 track({
                     action: 'game_toast',
@@ -55,7 +63,7 @@ export class Tip extends cc.Component {
         this.tipLabel.string = '';
     }
 
-    init(text: string) {
+    init(text: string, tipDelay: TipDelay) {
         this.tipLabel.string = text;
 
         // mark: label赋值后不会立即刷新宽度, 
@@ -64,7 +72,7 @@ export class Tip extends cc.Component {
         // if (this.tipLabel.node.width > this.originalWidth) {
         //     this.tipBg.width = this.tipLabel.node.width + 10;
         // }
-       
+
         if (this.tipLabel.node.width > cc.visibleRect.width - 60) {
             this.tipLabel.overflow = cc.Label.Overflow.SHRINK;
             this.tipLabel.node.width = cc.visibleRect.width - 60;
@@ -72,15 +80,13 @@ export class Tip extends cc.Component {
             this.tipLabel.overflow = cc.Label.Overflow.NONE;
         }
 
-        let seq = cc.sequence(
-            cc.spawn(cc.moveBy(0.25, cc.v2(0, 100)), cc.fadeIn(0.25)),
-            cc.delayTime(DELAY_LONG),
-            cc.spawn(cc.moveBy(0.25, cc.v2(0, 100)), cc.fadeOut(0.25)),
-            cc.callFunc(function () {
-                this.node.destroy();
-            }.bind(this)),
-        );
         this.tipBg.y = -100;
-        this.tipBg.runAction(seq);
+        this.tipBg.opacity = 0;
+        cc.Tween.stopAllByTarget(this.tipBg);
+        cc.tween(this.tipBg).by(0.25, { position: cc.v3(0, 100, 0), opacity: 255 }, {easing: 'sineIn'})
+            .delay(tipDelay).by(0.25, { position: cc.v3(0, 100, 0), opacity: -255 }, {easing: 'sineOut'})
+            .call(() => {
+                this.node.destroy();
+            }).start();
     }
 }
