@@ -3,7 +3,7 @@ import { ConstData } from '../data/ConstData';
  * @Author: xujiawei 
  * @Date: 2020-11-05 17:31:35 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-06 15:37:30
+ * @Last Modified time: 2020-11-10 19:53:35
  * @ref https://chenpipi.cn/post/cocos-creator-popup-manage/
  * @ref https://gitee.com/ifaswind/eazax-ccc/blob/master/core/PopupManager.ts
  * 
@@ -73,6 +73,9 @@ export class PopupMng {
 
     // 弹窗动态加载结束回调
     public static loadFinishCallback: Function = null;
+
+    // 强制弹出窗口队列
+    private static forcedQueue: PopupRequest[] = [];
 
     /**
      * 展示弹窗，如果当前已有弹窗在展示中则加入等待队列
@@ -147,6 +150,89 @@ export class PopupMng {
                         cc.Canvas.instance.scheduleOnce(res, this.interval);
                     });
                     this.next();
+                });
+                popup.show(options);
+                this.checkForcedPop();
+            } else {
+                // 没有PopupBase组件则直接打开节点
+                node.active = true;
+                res(PopupShowResult.Dirty);
+            }
+        });
+    }
+
+    /**
+     * 检查并显示所有强制弹窗
+     */
+    private static checkForcedPop() {
+        while (this.forcedQueue.length > 0) {
+            let popReq: PopupRequest = this.forcedQueue.shift();
+            this.showForced(popReq.path, popReq.options, popReq.mode);
+        }
+    }
+
+    /**
+     * 强制显示弹窗（多级弹窗时用）
+     * @param path 弹窗预制体的相对路径
+     * @param options 弹窗选项
+     * @param mode 缓存模式
+     */
+    public static showForced<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary): Promise<PopupShowResult> {
+        // 如果当前有非强制弹出的弹窗即将弹出(即this.locked == true)，则需要延迟显示强制弹出窗口，不然会被即将显示的正常窗口遮挡
+        if (this.locked = (this._queue.length > 0)) {
+            cc.log('[PopupMng]', '强制弹窗已放入forcedQueue', this.forcedQueue);
+            this.forcedQueue.push({path, options, mode});
+            return Promise.resolve(PopupShowResult.Wait);
+        } 
+
+        return new Promise(async res=>{
+            // 先尝试在缓存中获取
+            let node: cc.Node = this.getNodeFromCache(path);
+
+            // 缓存中没有，动态加载预制体
+            if (!cc.isValid(node, true)) {
+                // 建议在动态加载时添加加载提示并屏蔽用户点击，避免多次点击，如下：
+                // PopupManager.loadStartCallback = () => {
+                //     Loading.show('loadPrefab');
+                // }
+                this.loadStartCallback && this.loadStartCallback();
+                // 等待加载
+                await new Promise(res=>{
+                    cc.resources.load(path, (error: Error, prefab: cc.Prefab)=>{
+                        if (!error) {
+                            prefab.addRef();                    // 增加引用计数
+                            node = cc.instantiate(prefab);      // 实例化节点
+                            this.prefabMap.set(path, prefab);   // 保存预制体
+                            this.cacheModeMap.set(path, mode);  // 记录缓存模式
+                        }
+                        res();
+                    });
+                });
+                // 加载完成后隐藏加载提示，如下：
+                // PopupManager.loadFinishCallback = () => {
+                //     Loading.hide('loadPrefab');
+                // }
+                this.loadFinishCallback && this.loadFinishCallback();
+            }
+
+            // 加载失败（一般都是路径错误导致的）
+            if (!cc.isValid(node, true)) {
+                cc.warn('[PopupMng]', '弹窗加载失败', path);
+                return res(PopupShowResult.Fail);
+            }
+
+            // 添加到场景中
+            node.setParent(cc.Canvas.instance.node);
+            // 显示在最上层
+            // node.setSiblingIndex(cc.macro.MAX_ZINDEX);
+            node.zIndex = ConstData.ZIndex.POP_BASE;
+
+            // 获取继承自Popupbase的组件
+            const popup = node.getComponent(PopupBase);
+            if (popup) {
+                popup.setFinishCallback(async ()=>{
+                    this.recycle(path, node, mode);
+                    res(PopupShowResult.Done);
                 });
                 popup.show(options);
             } else {

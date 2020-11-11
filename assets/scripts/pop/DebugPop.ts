@@ -8,6 +8,7 @@ import { Tip } from './../framework/common/Tip';
 import { Alert } from './../framework/common/Alert';
 import PopupBase from '../framework/common/PopupBase';
 import { Loading } from '../framework/common/Loading';
+import { PopupMng } from '../framework/common/PopupMng';
 
 @ccclass
 export class DebugPop extends PopupBase<null> {
@@ -23,6 +24,9 @@ export class DebugPop extends PopupBase<null> {
     init(parmas) {
         this.pp1 = this.p1.getComponent("ProgressBar");
         this.pp2 = this.p2.getComponent("ProgressCircle");
+    }
+
+    onHide() {
     }
 
     btnCb (sender, name) {

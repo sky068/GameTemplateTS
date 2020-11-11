@@ -38,7 +38,7 @@ export class Alert extends PopupBase<AlertOptions> {
     cancleCb: any = null;
 
     static show(options: AlertOptions): void {
-        PopupMng.show("prefabs/common/Alert", options);
+        PopupMng.showForced("prefabs/common/Alert", options);
     }
 
     init(params: AlertOptions = {
