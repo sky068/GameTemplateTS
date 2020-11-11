@@ -2,9 +2,10 @@
  * @Author: xujiawei 
  * @Date: 2020-11-06 15:33:15 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-06 15:35:15
+ * @Last Modified time: 2020-11-11 11:49:50
  * 
- * 用来管理游戏流程，弹窗管理请用PopupMng,不再使用Director管理
+ * 用来管理游戏流程
+ * !!!弹窗管理请用PopupMng,不再建议使用Director管理
  */
 
 import { LocalDataMng } from './../data/localData/LocalDataMng';

@@ -1,5 +1,6 @@
 /**
  * Created by xujiawei on 2020-07-07 14:35:42
+ * @deprecated !!!已经弃用，请使用PopupBase配合PopUpMng使用
  */
 
 import { Button } from './../core/Button';
