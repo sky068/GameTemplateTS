@@ -24,7 +24,7 @@ export class UI {
     /**
      * 通用UI效果
      */
-    static bgScaleAction(node: cc.Node, params: any = {}): void {
+    static nodeScaleAction(node: cc.Node, params: any = {}): void {
         node.scale = 0.5;
         let seq = cc.sequence(
             cc.scaleTo(0.2, 1.05).easing(cc.easeSineOut()),
