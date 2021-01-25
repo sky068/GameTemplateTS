@@ -28,6 +28,8 @@ export class ProgressBar extends cc.ProgressBar {
             return;
         }
         this.unscheduleAllCallbacks();
+        p = Math.min(p, 1);
+        p = Math.max(p, 0);
         this.speed = (p-this.progress) / t;
         this.desProgress = p;
         this.progressCb = cb;
