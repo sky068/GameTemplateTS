@@ -2,7 +2,7 @@
  * @Author: xujiawei 
  * @Date: 2020-11-06 15:43:52 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-06 19:33:22
+ * @Last Modified time: 2021-01-25 14:20:42
  * 
  * 全屏loading界面，用来加载数据并显示进度
  */
@@ -66,11 +66,11 @@ export class LoadPop extends cc.Component {
         this.desLabel.node.active = showDes;
     }
 
-    static updateLoadingInfo(p: number, des: string) {
+    static updateLoadingInfo(p: number, des: string, cb: ()=>void = null) {
         if (LoadPop.loadPop) {
             let loadPop: LoadPop = this.loadPop.getComponent("LoadPop");
-            loadPop.progressBar.progress = p;
             loadPop.desLabel.string = des;
+            loadPop.progressBar.setProgressBarToPercent(Math.abs(p - loadPop.progressBar.progress) * 0.5 , p, cb);
         }
     }
 }

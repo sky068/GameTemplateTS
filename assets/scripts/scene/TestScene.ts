@@ -2,10 +2,10 @@
  * @Author: xujiawei 
  * @Date: 2020-11-06 15:38:04 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-10 19:51:06
+ * @Last Modified time: 2021-01-25 12:01:15
  */
 
-import { PopupMng, PopupCacheMode } from '../framework/common/PopupMng';
+import { popupMng, PopupCacheMode } from '../framework/common/PopupMng';
 
 const { ccclass, property } = cc._decorator;
 import { Audio } from './../framework/core/Audio';
@@ -23,11 +23,11 @@ export class TestScene extends cc.Component {
     }
     
     debugCall () {
-        PopupMng.show('prefabs/pop/DebugPop');
+        popupMng.show('prefabs/pop/DebugPop');
     }
 
     settingCall () {
-        PopupMng.show("prefabs/pop/SettingPop");
+        popupMng.show("prefabs/pop/SettingPop");
     }
 
     showPopCall() {
@@ -35,6 +35,7 @@ export class TestScene extends cc.Component {
             cc.log('this is TestScene, i know TestPop hide');
         }
         let options: TestPopOptions = {data:[1,2,3], title: 'hello', cb: cb};
-        PopupMng.show(TestPop.path, options, PopupCacheMode.Once);
+        popupMng.show(TestPop.path, options, PopupCacheMode.Once);
+        popupMng.show(TestPop.path, options, PopupCacheMode.Once);
     }
 }

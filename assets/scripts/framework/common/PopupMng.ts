@@ -3,7 +3,7 @@ import { ConstData } from '../data/ConstData';
  * @Author: xujiawei 
  * @Date: 2020-11-05 17:31:35 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-10 19:53:35
+ * @Last Modified time: 2021-01-25 12:04:20
  * @ref https://chenpipi.cn/post/cocos-creator-popup-manage/
  * @ref https://gitee.com/ifaswind/eazax-ccc/blob/master/core/PopupManager.ts
  * 
@@ -44,38 +44,52 @@ export enum PopupShowResult {
     Dirty = 4
 }
 
-export class PopupMng {
+class PopupMng {
     // 预制=体表
-    private static prefabMap: Map<string, cc.Prefab> = new Map<string, cc.Prefab>();
+    private prefabMap: Map<string, cc.Prefab> = new Map<string, cc.Prefab>();
 
     // 节点表
-    private static nodeMap: Map<string, cc.Node> = new Map<string, cc.Node>();
+    private nodeMap: Map<string, cc.Node> = new Map<string, cc.Node>();
 
     // 缓存模式
-    private static cacheModeMap: Map<string, PopupCacheMode> = new Map<string, PopupCacheMode>();
+    private _cacheModeMap: Map<string, PopupCacheMode> = new Map<string, PopupCacheMode>();
 
     // 等待队列
-    public static get queue() { return this._queue; };
-    private static _queue: PopupRequest[] = [];
+    public get queue() { return this._queue; };
+    private _queue: PopupRequest[] = [];
 
     // 当前弹窗
-    public static get curPopup() { return this._curPopup; }
-    private static _curPopup: PopupRequest = null;
+    public get curPopup() { return this._curPopup; }
+    private _curPopup: PopupRequest = null;
 
     // 是否已经有候选弹窗将要显示
-    private static locked: boolean = false;
+    private _locked: boolean = false;
 
     // 连续展示弹窗的间隔时间（秒）
-    public static interval: number = 0.1;
+    public interval: number = 0.1;
 
     // 弹窗动态加载开始回调
-    public static loadStartCallback: Function = null;
+    public loadStartCallback: Function = null;
 
     // 弹窗动态加载结束回调
-    public static loadFinishCallback: Function = null;
+    public loadFinishCallback: Function = null;
 
-    // 强制弹出窗口队列
-    private static forcedQueue: PopupRequest[] = [];
+    private static _instance: PopupMng = null;
+
+    constructor() {
+        cc.director.on(cc.Director.EVENT_AFTER_SCENE_LAUNCH, () => {
+            cc.log('[PopupMng]', '场景切换完毕，清理数据');
+            this.clean();
+        }, this);
+    }
+
+    public static getInstance(): PopupMng {
+        if (!PopupMng._instance) {
+            cc.log('[PopupMng]', 'new instance');
+            PopupMng._instance = new PopupMng();
+        }
+        return PopupMng._instance;
+    }
 
     /**
      * 展示弹窗，如果当前已有弹窗在展示中则加入等待队列
@@ -84,17 +98,17 @@ export class PopupMng {
      * @param mode 缓存模式
      * @param priority 是否优先显示
      */
-    public static show<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false): Promise<PopupShowResult> {
-        return new Promise(async res=>{
+    public show<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false): Promise<PopupShowResult> {
+        return new Promise(async res => {
             // 当前已经有弹窗在展示中则加入等待队列
-            if (this._curPopup || this.locked) {
+            if (this._curPopup || this._locked) {
                 this.push(path, options, mode, priority);
                 cc.log('[PopupMng]', '弹窗已经加入等待队列', this._queue);
                 return res(PopupShowResult.Wait);
             }
 
             // 保存为当前弹窗，阻止新的弹窗请求
-            this._curPopup = {path, options, mode};
+            this._curPopup = { path, options, mode };
 
             // 先尝试在缓存中获取
             let node: cc.Node = this.getNodeFromCache(path);
@@ -102,24 +116,24 @@ export class PopupMng {
             // 缓存中没有，动态加载预制体
             if (!cc.isValid(node, true)) {
                 // 建议在动态加载时添加加载提示并屏蔽用户点击，避免多次点击，如下：
-                // PopupManager.loadStartCallback = () => {
+                // this.loadStartCallback = () => {
                 //     Loading.show('loadPrefab');
                 // }
                 this.loadStartCallback && this.loadStartCallback();
                 // 等待加载
-                await new Promise(res=>{
-                    cc.resources.load(path, (error: Error, prefab: cc.Prefab)=>{
+                await new Promise(res => {
+                    cc.resources.load(path, (error: Error, prefab: cc.Prefab) => {
                         if (!error) {
                             prefab.addRef();                    // 增加引用计数
                             node = cc.instantiate(prefab);      // 实例化节点
                             this.prefabMap.set(path, prefab);   // 保存预制体
-                            this.cacheModeMap.set(path, mode);  // 记录缓存模式
+                            this._cacheModeMap.set(path, mode);  // 记录缓存模式
                         }
                         res();
                     });
                 });
                 // 加载完成后隐藏加载提示，如下：
-                // PopupManager.loadFinishCallback = () => {
+                // this.loadFinishCallback = () => {
                 //     Loading.hide('loadPrefab');
                 // }
                 this.loadFinishCallback && this.loadFinishCallback();
@@ -141,10 +155,10 @@ export class PopupMng {
             // 获取继承自Popupbase的组件
             const popup = node.getComponent(PopupBase);
             if (popup) {
-                popup.setFinishCallback(async ()=>{
+                popup.setFinishCallback(async () => {
                     this.recycle(path, node, mode);
                     this._curPopup = null;
-                    this.locked = (this._queue.length > 0);
+                    this._locked = (this._queue.length > 0);
                     res(PopupShowResult.Done);
                     await new Promise(res => {
                         cc.Canvas.instance.scheduleOnce(res, this.interval);
@@ -152,7 +166,6 @@ export class PopupMng {
                     this.next();
                 });
                 popup.show(options);
-                this.checkForcedPop();
             } else {
                 // 没有PopupBase组件则直接打开节点
                 node.active = true;
@@ -162,30 +175,13 @@ export class PopupMng {
     }
 
     /**
-     * 检查并显示所有强制弹窗
-     */
-    private static checkForcedPop() {
-        while (this.forcedQueue.length > 0) {
-            let popReq: PopupRequest = this.forcedQueue.shift();
-            this.showForced(popReq.path, popReq.options, popReq.mode);
-        }
-    }
-
-    /**
      * 强制显示弹窗（多级弹窗时用）
      * @param path 弹窗预制体的相对路径
      * @param options 弹窗选项
      * @param mode 缓存模式
      */
-    public static showForced<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary): Promise<PopupShowResult> {
-        // 如果当前有非强制弹出的弹窗即将弹出(即this.locked == true)，则需要延迟显示强制弹出窗口，不然会被即将显示的正常窗口遮挡
-        if (this.locked = (this._queue.length > 0)) {
-            cc.log('[PopupMng]', '强制弹窗已放入forcedQueue', this.forcedQueue);
-            this.forcedQueue.push({path, options, mode});
-            return Promise.resolve(PopupShowResult.Wait);
-        } 
-
-        return new Promise(async res=>{
+    public showForced<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary): Promise<PopupShowResult> {
+        return new Promise(async res => {
             // 先尝试在缓存中获取
             let node: cc.Node = this.getNodeFromCache(path);
 
@@ -197,13 +193,13 @@ export class PopupMng {
                 // }
                 this.loadStartCallback && this.loadStartCallback();
                 // 等待加载
-                await new Promise(res=>{
-                    cc.resources.load(path, (error: Error, prefab: cc.Prefab)=>{
+                await new Promise(res => {
+                    cc.resources.load(path, (error: Error, prefab: cc.Prefab) => {
                         if (!error) {
                             prefab.addRef();                    // 增加引用计数
                             node = cc.instantiate(prefab);      // 实例化节点
                             this.prefabMap.set(path, prefab);   // 保存预制体
-                            this.cacheModeMap.set(path, mode);  // 记录缓存模式
+                            this._cacheModeMap.set(path, mode);  // 记录缓存模式
                         }
                         res();
                     });
@@ -223,14 +219,14 @@ export class PopupMng {
 
             // 添加到场景中
             node.setParent(cc.Canvas.instance.node);
-            // 显示在最上层
+            // 显示在最上层, 强制弹窗层级高于普通弹窗
             // node.setSiblingIndex(cc.macro.MAX_ZINDEX);
-            node.zIndex = ConstData.ZIndex.POP_BASE;
+            node.zIndex = ConstData.ZIndex.POP_BASE + 1;
 
             // 获取继承自Popupbase的组件
             const popup = node.getComponent(PopupBase);
             if (popup) {
-                popup.setFinishCallback(async ()=>{
+                popup.setFinishCallback(async () => {
                     this.recycle(path, node, mode);
                     res(PopupShowResult.Done);
                 });
@@ -247,8 +243,8 @@ export class PopupMng {
      * 从缓存中获取节点
      * @param path 
      */
-    private static getNodeFromCache(path: string): cc.Node {
-        switch(this.cacheModeMap.get(path)) {
+    private getNodeFromCache(path: string): cc.Node {
+        switch (this._cacheModeMap.get(path)) {
             case PopupCacheMode.Temporary:
                 const prefab = this.prefabMap.get(path);
                 if (cc.isValid(prefab, true)) {
@@ -268,12 +264,12 @@ export class PopupMng {
         }
     }
 
-    public static next(): void {
+    public next(): void {
         if (this._curPopup || this._queue.length == 0) {
             return;
         }
         const request = this._queue.shift();
-        this.locked = false;
+        this._locked = false;
         this.show(request.path, request.options, request.mode);
     }
 
@@ -284,17 +280,17 @@ export class PopupMng {
      * @param mode 缓存模式
      * @param priority 是否优先显示
      */
-    public static push<Opations>(path: string, options: Opations = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false) {
+    public push<Opations>(path: string, options: Opations = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false) {
         // 直接显示
-        if (!this._curPopup && !this.locked) {
+        if (!this._curPopup && !this._locked) {
             this.show(path, options, mode);
             return;
         }
         // 加入队列
         if (priority) {
-            this._queue.unshift({path, options, mode});
+            this._queue.unshift({ path, options, mode });
         } else {
-            this._queue.push({path, options, mode});
+            this._queue.push({ path, options, mode });
         }
     }
 
@@ -304,8 +300,8 @@ export class PopupMng {
      * @param node 弹窗节点
      * @param mode 缓存模式
      */
-    private static recycle(path: string, node: cc.Node, mode: PopupCacheMode): void {
-        switch(mode) {
+    private recycle(path: string, node: cc.Node, mode: PopupCacheMode): void {
+        switch (mode) {
             case PopupCacheMode.Once:
                 node.destroy();
                 if (this.nodeMap.has(path)) {
@@ -332,7 +328,7 @@ export class PopupMng {
      * 尝试释放弹窗资源（注意：弹窗内部动态加载的资源请自行释放）
      * @param path 弹窗预制体相对路径
      */
-    public static release(path: string): void {
+    public release(path: string): void {
         let prefab = this.prefabMap.get(path);
         if (prefab) {
             this.prefabMap.delete(path);
@@ -340,4 +336,30 @@ export class PopupMng {
             prefab = null;
         }
     }
+
+    /**
+     * 当切换场景时要移除所有缓存的弹窗信息
+     */
+    clean() {
+        this.nodeMap.forEach((node: cc.Node, path: string) => {
+            if (node && cc.isValid(node, true)) {
+                node.destroy();
+            }
+        });
+        this.nodeMap.clear();
+
+        this.prefabMap.forEach((p: cc.Prefab, path: string) => {
+            if (p) {
+                p.decRef();
+            }
+        });
+        this.prefabMap.clear();
+
+        this._cacheModeMap.clear();
+        this._queue.splice(0, this._queue.length);
+        this._curPopup = null;
+        this._locked = false;
+    }
 }
+
+export let popupMng = PopupMng.getInstance();

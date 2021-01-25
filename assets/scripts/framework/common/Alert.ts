@@ -3,7 +3,7 @@
  */
 
 import PopupBase from './PopupBase';
-import { PopupMng } from './PopupMng';
+import { PopupCacheMode, popupMng } from './PopupMng';
 
 const { ccclass, property } = cc._decorator;
 type AlertCb = ()=>void;
@@ -38,7 +38,7 @@ export class Alert extends PopupBase<AlertOptions> {
     cancleCb: any = null;
 
     static show(options: AlertOptions): void {
-        PopupMng.showForced("prefabs/common/Alert", options);
+        popupMng.showForced("prefabs/common/Alert", options, PopupCacheMode.Frequent);
     }
 
     init(params: AlertOptions = {

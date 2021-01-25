@@ -97,12 +97,15 @@ export class InitScene extends cc.Component {
             LoadPop.updateLoadingInfo(cur / total, `${cur} / ${total}`);
             let t = setInterval(() => {
                 cur += 1;
-                LoadPop.updateLoadingInfo(cur / total, `${cur} / ${total}`);
                 if (cur >= total) {
                     clearInterval(t);
-                    resolve();
                 }
-            }, 200);
+                LoadPop.updateLoadingInfo(cur / total, `${cur} / ${total}`, ()=>{
+                    if (cur >= total) {
+                        resolve();
+                    }
+                });
+            }, 100);
         }).then(() => {
             // LoadPop.removeLoadPop();
             Director.loadScene("Test");

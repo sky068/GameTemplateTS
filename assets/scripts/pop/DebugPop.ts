@@ -8,7 +8,7 @@ import { Tip } from './../framework/common/Tip';
 import { Alert } from './../framework/common/Alert';
 import PopupBase from '../framework/common/PopupBase';
 import { Loading } from '../framework/common/Loading';
-import { PopupMng } from '../framework/common/PopupMng';
+import { popupMng } from '../framework/common/PopupMng';
 
 @ccclass
 export class DebugPop extends PopupBase<null> {
@@ -27,6 +27,7 @@ export class DebugPop extends PopupBase<null> {
     }
 
     onHide() {
+        cc.log('DebugPop hide');
     }
 
     btnCb (sender, name) {
