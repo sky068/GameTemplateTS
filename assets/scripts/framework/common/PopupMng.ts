@@ -1,16 +1,17 @@
-import { ConstData } from '../data/ConstData';
 /*
  * @Author: xujiawei 
- * @Date: 2020-11-05 17:31:35 
+ * @Date: 2021-01-29 16:34:10 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2021-01-25 12:04:20
+ * @Last Modified time: 2021-05-13 16:02:22
  * @ref https://chenpipi.cn/post/cocos-creator-popup-manage/
  * @ref https://gitee.com/ifaswind/eazax-ccc/blob/master/core/PopupManager.ts
  * 
  * 弹窗管理类(管理PopupBase及子类窗口)
  */
 
-import PopupBase from './PopupBase';
+import { ConstData } from '../data/ConstData';
+import { Loading } from './Loading';
+import { PopupBase } from './PopupBase';
 
 export enum PopupCacheMode {
     // 一次性（立即销毁节点并释放预制体）
@@ -30,6 +31,8 @@ export interface PopupRequest {
     options: any;
     // 缓存模式
     mode: PopupCacheMode;
+    // 是否使用弹窗动画
+    ani: boolean;
 }
 
 /** 弹窗请求结果 */
@@ -66,7 +69,7 @@ class PopupMng {
     private _locked: boolean = false;
 
     // 连续展示弹窗的间隔时间（秒）
-    public interval: number = 0.1;
+    public interval: number = 0.05;
 
     // 弹窗动态加载开始回调
     public loadStartCallback: Function = null;
@@ -80,6 +83,13 @@ class PopupMng {
         cc.director.on(cc.Director.EVENT_AFTER_SCENE_LAUNCH, () => {
             cc.log('[PopupMng]', '场景切换完毕，清理数据');
             this.clean();
+            // 在加载prefab时最好屏蔽操作
+            this.loadStartCallback = (name) => {
+                Loading.show(name, 0.5);
+            }
+            this.loadFinishCallback = (name) => {
+                Loading.hide(name);
+            }
         }, this);
     }
 
@@ -97,18 +107,19 @@ class PopupMng {
      * @param options 弹窗选项
      * @param mode 缓存模式
      * @param priority 是否优先显示
+     * @param ani 是否使用弹窗动画
      */
-    public show<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false): Promise<PopupShowResult> {
+    public show<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false, ani: boolean = true): Promise<PopupShowResult> {
         return new Promise(async res => {
             // 当前已经有弹窗在展示中则加入等待队列
             if (this._curPopup || this._locked) {
-                this.push(path, options, mode, priority);
+                this.push(path, options, mode, priority, ani);
                 cc.log('[PopupMng]', '弹窗已经加入等待队列', this._queue);
                 return res(PopupShowResult.Wait);
             }
 
             // 保存为当前弹窗，阻止新的弹窗请求
-            this._curPopup = { path, options, mode };
+            this._curPopup = { path, options, mode, ani };
 
             // 先尝试在缓存中获取
             let node: cc.Node = this.getNodeFromCache(path);
@@ -116,10 +127,7 @@ class PopupMng {
             // 缓存中没有，动态加载预制体
             if (!cc.isValid(node, true)) {
                 // 建议在动态加载时添加加载提示并屏蔽用户点击，避免多次点击，如下：
-                // this.loadStartCallback = () => {
-                //     Loading.show('loadPrefab');
-                // }
-                this.loadStartCallback && this.loadStartCallback();
+                this.loadStartCallback && this.loadStartCallback(path);
                 // 等待加载
                 await new Promise(res => {
                     cc.resources.load(path, (error: Error, prefab: cc.Prefab) => {
@@ -128,15 +136,14 @@ class PopupMng {
                             node = cc.instantiate(prefab);      // 实例化节点
                             this.prefabMap.set(path, prefab);   // 保存预制体
                             this._cacheModeMap.set(path, mode);  // 记录缓存模式
+                        } else {
+                            cc.error(error.message);
                         }
                         res();
                     });
                 });
                 // 加载完成后隐藏加载提示，如下：
-                // this.loadFinishCallback = () => {
-                //     Loading.hide('loadPrefab');
-                // }
-                this.loadFinishCallback && this.loadFinishCallback();
+                this.loadFinishCallback && this.loadFinishCallback(path);
             }
 
             // 加载失败（一般都是路径错误导致的）
@@ -165,7 +172,7 @@ class PopupMng {
                     });
                     this.next();
                 });
-                popup.show(options);
+                popup.show(options, ani);
             } else {
                 // 没有PopupBase组件则直接打开节点
                 node.active = true;
@@ -179,8 +186,9 @@ class PopupMng {
      * @param path 弹窗预制体的相对路径
      * @param options 弹窗选项
      * @param mode 缓存模式
+     * @param ani 是否使用弹窗动画
      */
-    public showForced<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary): Promise<PopupShowResult> {
+    public showForced<Options>(path: string, options: Options = null, mode: PopupCacheMode = PopupCacheMode.Temporary, ani: boolean = true): Promise<PopupShowResult> {
         return new Promise(async res => {
             // 先尝试在缓存中获取
             let node: cc.Node = this.getNodeFromCache(path);
@@ -188,9 +196,6 @@ class PopupMng {
             // 缓存中没有，动态加载预制体
             if (!cc.isValid(node, true)) {
                 // 建议在动态加载时添加加载提示并屏蔽用户点击，避免多次点击，如下：
-                // PopupManager.loadStartCallback = () => {
-                //     Loading.show('loadPrefab');
-                // }
                 this.loadStartCallback && this.loadStartCallback();
                 // 等待加载
                 await new Promise(res => {
@@ -205,9 +210,6 @@ class PopupMng {
                     });
                 });
                 // 加载完成后隐藏加载提示，如下：
-                // PopupManager.loadFinishCallback = () => {
-                //     Loading.hide('loadPrefab');
-                // }
                 this.loadFinishCallback && this.loadFinishCallback();
             }
 
@@ -230,7 +232,7 @@ class PopupMng {
                     this.recycle(path, node, mode);
                     res(PopupShowResult.Done);
                 });
-                popup.show(options);
+                popup.show(options, ani);
             } else {
                 // 没有PopupBase组件则直接打开节点
                 node.active = true;
@@ -270,7 +272,7 @@ class PopupMng {
         }
         const request = this._queue.shift();
         this._locked = false;
-        this.show(request.path, request.options, request.mode);
+        this.show(request.path, request.options, request.mode, false, request.ani);
     }
 
     /**
@@ -280,17 +282,17 @@ class PopupMng {
      * @param mode 缓存模式
      * @param priority 是否优先显示
      */
-    public push<Opations>(path: string, options: Opations = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false) {
+    public push<Opations>(path: string, options: Opations = null, mode: PopupCacheMode = PopupCacheMode.Temporary, priority: boolean = false, ani = true) {
         // 直接显示
         if (!this._curPopup && !this._locked) {
-            this.show(path, options, mode);
+            this.show(path, options, mode, ani);
             return;
         }
         // 加入队列
         if (priority) {
-            this._queue.unshift({ path, options, mode });
+            this._queue.unshift({ path, options, mode, ani });
         } else {
-            this._queue.push({ path, options, mode });
+            this._queue.push({ path, options, mode, ani });
         }
     }
 

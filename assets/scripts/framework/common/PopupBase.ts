@@ -1,8 +1,8 @@
 /*
  * @Author: xujiawei 
- * @Date: 2020-11-05 17:01:35 
+ * @Date: 2021-01-29 16:35:18 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2020-11-06 17:35:30
+ * @Last Modified time: 2021-05-13 16:04:56
  * @ref https://chenpipi.cn/post/cocos-creator-popup-manage/
  * @ref https://gitee.com/ifaswind/eazax-ccc/blob/master/components/popups/PopupBase.ts
  * 
@@ -18,7 +18,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class PopupBase<Options> extends cc.Component {
+export class PopupBase<Options> extends cc.Component {
     @property({ type: cc.Node, tooltip: CC_DEV && '背景遮罩' })
     public mask: cc.Node = null;
 
@@ -50,69 +50,109 @@ export default class PopupBase<Options> extends cc.Component {
         this.node.on(cc.Node.EventType.TOUCH_END, this.onClicked, this);
     }
 
+    // 强制刷新所有的widget，解决因为播放tween动画导致widget(嵌套)计算错误的问题
+    private recursiveUpdateWigetForced(node: cc.Node) {
+        let children = node.children;
+        let childrenCount = node.childrenCount;
+        if (childrenCount) {
+            for (let child of children) {
+                let widget = child.getComponent(cc.Widget);
+                if (widget) {
+                    widget.updateAlignment();
+                }
+                this.recursiveUpdateWigetForced(child);
+            }
+        }
+    }
+
     /**
      * 展示弹窗 通过PopupMng调用
-     * @param optins 弹窗选项
+     * @param options 弹窗选项
+     * @param ani 是否使用弹出动画
      */
-    public show(optins?: Options): void {
+    public show(options?: Options, ani: boolean = true): void {
         // 保存选项
-        this.options = optins;
+        this.options = options;
         // ？？mark: 如果把init和updateDisplay放到重置节点下面执行则Slider就显示异常
         // 初始化
         this.init(this.options);
         // 更新样式
         this.updateDisplay(this.options);
 
-        // 重置节点
-        this.mask.opacity = 0;
-        this.mask.active = true;
-        this.main.scale = 0;
-        this.main.active = true;
-        this.node.active = true;
+        if (ani) {
+            // 重置节点
+            this.mask.opacity = 0;
+            this.mask.active = true;
+            this.main.scale = 0;
+            this.main.active = true;
+            this.node.active = true;
 
-        // 播放背景动画
-        cc.tween(this.mask).to(this.aniTime * 0.8, { opacity: 100 }).start();
-        // 播放主题动画
-        cc.tween(this.main).to(this.aniTime, { scale: 1 }, { easing: 'backOut' }).call(() => {
-            // 弹窗已经完全展示
-            this.onShow();
-        }).start();
+            // 播放背景动画
+            cc.tween(this.mask).to(this.aniTime * 0.8, { opacity: 100 }).start();
+            // 播放主题动画
+            cc.tween(this.main).to(this.aniTime, { scale: 1 }, { easing: 'backOut' }).call(() => {
+                // 弹窗已经完全展示
+                this.onShow();
+                this.recursiveUpdateWigetForced(this.node.parent);
+            }).start();
+        } else {
+            this.mask.active = true;
+            this.main.active = true;
+            this.node.active = true;
+        }
     }
 
     /**
      * 隐藏弹窗
      * !!!子类重写的话一定要记得调用finishCallback
+     * @param ani 是否使用隐藏动画
      */
-    public hide(): void {
-        // 拦截点击事件
-        if (!this.blocker) {
-            this.blocker = new cc.Node('blocker');
-            this.blocker.addComponent(cc.BlockInputEvents);
-            this.blocker.setParent(this.node);
-            this.blocker.setContentSize(this.node.getContentSize());
-        }
-        this.blocker.active = true;
-        // 播放背景动画
-        cc.tween(this.mask).delay(this.aniTime * 0.2).to(this.aniTime * 0.8, { opacity: 0 }).call(() => {
-            this.mask.active = false;
-        }).start();
-        // 播放主题动画
-        cc.tween(this.main).to(this.aniTime, { scale: 0 }, { easing: 'backIn' }).call(() => {
-            // 取消拦截
-            this.blocker.active = false;
+    public hide(ani: boolean = true): void {
+        if (ani) {
+            // 拦截点击事件
+            if (!this.blocker) {
+                this.blocker = new cc.Node('blocker');
+                this.blocker.addComponent(cc.BlockInputEvents);
+                this.blocker.setParent(this.node);
+                this.blocker.setContentSize(this.node.getContentSize());
+            }
+            this.blocker.active = true;
+            // 播放背景动画
+            cc.tween(this.mask).delay(this.aniTime * 0.2).to(this.aniTime * 0.8, { opacity: 0 }).call(() => {
+                this.mask.active = false;
+            }).start();
+            // 播放主题动画
+            cc.tween(this.main).to(this.aniTime, { scale: 0 }, { easing: 'backIn' }).call(() => {
+                // 取消拦截
+                this.blocker.active = false;
+                // 关闭节点
+                this.main.active = false;
+                this.node.active = false;
+                // 弹窗已经完全隐藏（动画结束）
+                this.onHide();
+                // 弹窗完成回调（该回调为 PopupManager 专用）
+                // 用来通知PopupMng该窗口关闭了
+                // 注意：子类重写 hide 函数时记得调用该回调
+                if (this.finishCallback) {
+                    this.finishCallback();
+                    this.finishCallback = null;
+                }
+            }).start();
+        } else {
             // 关闭节点
+            this.mask.active = false;
             this.main.active = false;
             this.node.active = false;
             // 弹窗已经完全隐藏（动画结束）
             this.onHide();
             // 弹窗完成回调（该回调为 PopupManager 专用）
             // 用来通知PopupMng该窗口关闭了
-            // 注意：重写 hide 函数时记得调用该回调
+            // 注意：子类重写 hide 函数时记得调用该回调
             if (this.finishCallback) {
                 this.finishCallback();
                 this.finishCallback = null;
             }
-        }).start();
+        }
     }
 
     /**
