@@ -2,7 +2,7 @@
  * @Author: xujiawei 
  * @Date: 2021-01-29 16:35:18 
  * @Last Modified by: xujiawei
- * @Last Modified time: 2021-05-13 16:04:56
+ * @Last Modified time: 2021-06-18 10:46:07
  * @ref https://chenpipi.cn/post/cocos-creator-popup-manage/
  * @ref https://gitee.com/ifaswind/eazax-ccc/blob/master/components/popups/PopupBase.ts
  * 
@@ -87,12 +87,21 @@ export class PopupBase<Options> extends cc.Component {
             this.main.active = true;
             this.node.active = true;
 
+            // 播放动画时禁止点击，防止误操作
+            let swallowNode = new cc.Node();
+            swallowNode.width = this.main.width;
+            swallowNode.height = this.main.height;
+            swallowNode.addComponent(cc.BlockInputEvents);
+            this.main.addChild(swallowNode);
+
             // 播放背景动画
             cc.tween(this.mask).to(this.aniTime * 0.8, { opacity: 100 }).start();
             // 播放主题动画
             cc.tween(this.main).to(this.aniTime, { scale: 1 }, { easing: 'backOut' }).call(() => {
                 // 弹窗已经完全展示
                 this.onShow();
+                swallowNode.removeFromParent(true);
+                swallowNode.destroy();
                 this.recursiveUpdateWigetForced(this.node.parent);
             }).start();
         } else {
@@ -181,7 +190,7 @@ export class PopupBase<Options> extends cc.Component {
     /**
      * 弹窗窗体被点击
      */
-    private onClicked() {
+    protected onClicked() {
         if (this.touchClose) {
             this.hide();
         }
